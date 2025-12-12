@@ -11,8 +11,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "John Doe - Développeur Full-Stack",
-  description: "Portfolio de John Doe, Développeur Full-Stack spécialisé dans les technologies web modernes",
+  title: "Fatou Seye - Développeur Full-Stack",
+  description: "Portfolio de Fatou Seye, Développeur Full-Stack spécialisé dans les technologies web modernes",
   generator: "v0.app",
   icons: {
     icon: [

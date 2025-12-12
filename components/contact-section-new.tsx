@@ -19,8 +19,20 @@ export function ContactSection({ data = contactData }: ContactSectionProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+
+    const subject = `Message de ${formData.name} via Portfolio`
+    const body = `Nom: ${formData.name}
+Email: ${formData.email}
+
+Message:
+${formData.message}`
+
+    const mailtoLink = `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+    window.location.href = mailtoLink
+
+    // Reset form after sending
+    setFormData({ name: "", email: "", message: "" })
   }
 
   return (
@@ -97,7 +109,7 @@ export function ContactSection({ data = contactData }: ContactSectionProps) {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="w-full px-4 md:px-5 py-3 md:py-3.5 bg-secondary border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none transition-all text-sm md:text-base"
-              placeholder="Jean Dupont"
+              placeholder="Fatou Seye"
               required
             />
           </div>
@@ -111,7 +123,7 @@ export function ContactSection({ data = contactData }: ContactSectionProps) {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="w-full px-4 md:px-5 py-3 md:py-3.5 bg-secondary border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none transition-all text-sm md:text-base"
-              placeholder="jean@example.com"
+              placeholder="fatouseyefass@example.com"
               required
             />
           </div>

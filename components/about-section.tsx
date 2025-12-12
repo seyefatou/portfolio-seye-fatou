@@ -1,4 +1,4 @@
-import { PenTool, Code, Smartphone, Zap } from "lucide-react"
+import { PenTool, Code, Smartphone, Zap, Download } from "lucide-react"
 import { aboutData } from "@/lib/portfolio-data"
 
 const iconMap = {
@@ -24,6 +24,15 @@ export function AboutSection({ data = aboutData }: AboutSectionProps) {
             <p key={index}>{paragraph}</p>
           ))}
         </div>
+        <a
+          href="/cv-fatou-seye.pdf"
+          download="CV-Fatou-Seye.pdf"
+          className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-accent text-accent-foreground font-medium rounded-xl hover:scale-105 hover:shadow-lg hover:shadow-accent/20 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+          style={{ animationDelay: '200ms', animationFillMode: 'both' }}
+        >
+          <Download className="w-5 h-5" />
+          Télécharger mon CV
+        </a>
       </div>
 
       {/* What I'm Doing */}
@@ -35,9 +44,10 @@ export function AboutSection({ data = aboutData }: AboutSectionProps) {
             return (
               <div
                 key={index}
-                className="flex gap-3 md:gap-4 p-4 md:p-6 bg-secondary rounded-xl md:rounded-2xl border border-border hover:border-accent transition-colors"
+                className="flex gap-3 md:gap-4 p-4 md:p-6 bg-secondary rounded-xl md:rounded-2xl border border-border hover:border-accent hover:scale-[1.02] hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 ease-out animate-in fade-in slide-in-from-bottom-4"
+                style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'both' }}
               >
-                <div className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0">
+                <div className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                   <IconComponent className="w-full h-full text-accent" strokeWidth={1.5} />
                 </div>
                 <div>
@@ -50,51 +60,6 @@ export function AboutSection({ data = aboutData }: AboutSectionProps) {
         </div>
       </div>
 
-      {/* Testimonials with Marquee Animation */}
-      <div>
-        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-6">Témoignages</h3>
-        <div className="relative overflow-hidden">
-          <div className="flex gap-3 md:gap-4 animate-marquee">
-            {[...data.testimonials, ...data.testimonials].map((testimonial, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-72 md:w-80 p-4 md:p-6 bg-secondary rounded-xl md:rounded-2xl border border-border"
-              >
-                <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
-                  <img
-                    src={testimonial.avatar || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl object-cover"
-                  />
-                  <h4 className="text-base md:text-lg font-semibold text-foreground">{testimonial.name}</h4>
-                </div>
-                <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{testimonial.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Clients with Marquee Animation */}
-      <div>
-        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-6">Clients</h3>
-        <div className="relative overflow-hidden py-4">
-          <div className="flex gap-4 md:gap-6 animate-marquee-slow">
-            {[...data.clients, ...data.clients].map((client, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-32 h-20 md:w-40 md:h-24 bg-secondary rounded-xl md:rounded-2xl border border-border flex items-center justify-center p-4 md:p-6 hover:border-accent transition-colors"
-              >
-                <img
-                  src={client.logo || "/placeholder.svg"}
-                  alt={client.name}
-                  className="w-full h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
